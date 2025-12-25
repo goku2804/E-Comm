@@ -1,3 +1,24 @@
-<h2>Order Placed Successfully 🎉</h2>
-<p>Order ID: {{ order.id }}</p>
-<a href="/">Back to shop</a>
+{% extends "base.html" %}
+{% block title %}Order Successful{% endblock %}
+
+{% block content %}
+
+<div class="text-center mt-5">
+    <div class="card shadow-sm p-5">
+        <h2 class="text-success mb-3">Order Placed Successfully!</h2>
+
+        <p class="lead">Thank you for your purchase.</p>
+        <p>Your order number is <strong>#{{ order.id }}</strong></p>
+
+        <div class="mt-4">
+            <a href="{% url 'orders:invoice' order.id %}" class="btn btn-outline-dark me-2">
+                View Invoice
+            </a>
+            <a href="/" class="btn btn-dark">
+                Continue Shopping
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
