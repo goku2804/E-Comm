@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+
+<h2>Admin Dashboard</h2>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card p-3 shadow-sm">
+            <h5>Total Orders</h5>
+            <h3>{{ total_orders }}</h3>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card p-3 shadow-sm">
+            <h5>Total Revenue</h5>
+            <h3>₹ {{ revenue }}</h3>
+        </div>
+    </div>
+</div>
+
+<h4>Top Products</h4>
+<ul>
+{% for p in top_products %}
+    <li>{{ p.product__name }} — {{ p.total }}</li>
+{% endfor %}
+</ul>
+
+<h4>Recent Orders</h4>
+<ul>
+{% for o in recent_orders %}
+    <li>Order #{{ o.id }} — {{ o.user.username }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

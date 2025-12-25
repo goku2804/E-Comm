@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Shop{% endblock %}
+
+{% block content %}
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <form method="GET">
+            <h5>Categories</h5>
+            <select class="form-select" name="category">
+                <option value="">All</option>
+                {% for cat in categories %}
+                    <option value="{{ cat.id }}">{{ cat.name }}</option>
+                {% endfor %}
+            </select>
+
+            <button class="btn btn-dark mt-2 w-100">Filter</button>
+        </form>
+    </div>
+
+    <div class="col-md-9">
+        <div class="row">
+
+            {% for product in products %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p>{{ product.description|truncatechars:80 }}</p>
+                            <h6>₹ {{ product.price }}</h6>
+                        </div>
+                        <div class="card-footer bg-white border-0">
+                            <a href="{% url 'cart:add_to_cart' product.id %}" class="btn btn-success w-100">
+                                Add to Cart
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+<h4>Recommended for You</h4>
+
+<div class="row">
+    {% for product in recommended %}
+        <div class="col-md-3">
+            <div class="card p-2 mb-3">
+                <h6>{{ product.name }}</h6>
+                <p>₹ {{ product.price }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

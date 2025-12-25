@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Your Cart{% endblock %}
+
+{% block content %}
+
+<h3>Your Shopping Cart</h3>
+
+{% if items %}
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>₹{{ item.product.price }}</td>
+            <td>₹{{ item.product.price|floatformat:2 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h4>Total: ₹{{ total }}</h4>
+
+<a href="{% url 'orders:checkout' %}" class="btn btn-success mt-2">
+    Proceed to Checkout
+</a>
+
+{% else %}
+<div class="alert alert-warning">Your cart is empty.</div>
+{% endif %}
+
+{% endblock %}
