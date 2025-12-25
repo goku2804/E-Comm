@@ -1,0 +1,44 @@
+# ============================
+# Python / Django
+# ============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Django specific
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Environment variables
+.env
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node / frontend (if ever used)
+node_modules/
+
+# Test / coverage
+htmlcov/
+.coverage
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
